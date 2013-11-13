@@ -17,3 +17,19 @@ Product.create(title: 'Programming Ruby 1.9',
 	image_url: 'ruby.jpg',
 	price: 49.95)
 #...
+Product.create(title: 'JavaScript Devinitiv Guide',
+	description:
+	%{<p>
+		Web frontend engneer must read this book. covering HTML5.
+		</P>},
+	image_url: 'js.jpg',
+	price: 29.95)
+#...
+Product.create(title: 'Agile development with Ruby on rails 4.0 ',
+	description:
+	%{<p>
+		Fast web development and latest development technology is 
+		all in this book.
+	</P>},
+	image_url: 'js.jpg',
+	price: 29.95)
