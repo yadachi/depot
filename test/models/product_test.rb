@@ -34,7 +34,8 @@ class ProductTest < ActiveSupport::TestCase
                             price:        1,
                             image_url:    "fred.gif")
       assert !product.save
-      assert_equal "has already been taken", product.errors[:title].join(';')
+      assert_equal "has already been taken",
+        product.errors[:title].join(';')
     end
 
     # test "product is not valid without a unique title - i18n" do
@@ -69,8 +70,12 @@ class ProductTest < ActiveSupport::TestCase
     end
 
     test "description must be longer than 10" do
-      product = Product.new(title:      "little book",
-                            price:      1,
-                            image_url:  "fred.gif")
-      assert
+      product = Product.new(description:  "yyy",
+			    price:        1,
+                            image_url:    "fred.gif")
+      product.title = "tiny book"
+      assert product.invalid?
+      assert_equal "must be longer than 10 letter",
+        product.errors[:title].join(';')
+    end
 end
