@@ -71,7 +71,7 @@ class ProductTest < ActiveSupport::TestCase
 
     test "description must be longer than 10" do
       product = Product.new(description:  "yyy",
-			    price:        1,
+			price:        1,
                             image_url:    "fred.gif")
       product.title = "tiny book"
       assert product.invalid?
