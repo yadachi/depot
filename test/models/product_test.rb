@@ -38,15 +38,16 @@ class ProductTest < ActiveSupport::TestCase
         product.errors[:title].join(';')
     end
 
-    # test "product is not valid without a unique title - i18n" do
-    #   product = Product.new(title:        "Programming Ruby 1.9",
-    #                         description:  "YYY",
-    #                         image_url:    "zzz.jpg")
+    test "product is not valid without a unique title - i18n" do
+      product = Product.new(title:        products(:ruby).title,
+                            description:  "YYY",
+                            price:        1, 
+                            image_url:    "fred.jpg")
 
-    #   assert !product.save
-    #   assert_equal I18n.translate('activerecode.errors.messages.taken'),
-    #   			   product.errors[:title].join(';')
-    # end
+      assert !product.save
+      assert_equal I18n.translate('errors.messages.taken'),
+      			   product.errors[:title].join('; ')
+    end
 
     def new_product(image_url)
       Product.new(title:        "My title book",
@@ -67,15 +68,5 @@ class ProductTest < ActiveSupport::TestCase
       bad.each do |name|
       assert new_product(name).invalid?, "#{name} shouldn't be valid"
       end
-    end
-
-    test "description must be longer than 10" do
-      product = Product.new(description:  "yyy",
-			price:        1,
-                            image_url:    "fred.gif")
-      product.title = "tiny book"
-      assert product.invalid?
-      assert_equal "must be longer than 10 letter",
-        product.errors[:title].join(';')
     end
 end
