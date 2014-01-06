@@ -16,6 +16,18 @@ Depot::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  # Mail server settings.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:         "smtp.gmail.com",
+    port:            587,
+    domain:          "domain.of.sender.net",
+    authentication:  "plain",
+    user_name:       "front.lightstone",
+    password:        "contact79",
+    enable_starttles_auto: true 
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
