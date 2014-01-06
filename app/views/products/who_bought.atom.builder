@@ -19,7 +19,7 @@ atom_feed do |feed|
 					order.line_items.each do |item|
 						xhtml.tr do
 							xhtml.td item.product.title
-							xhtml.td item.quantity
+							xhtml.td item.Quantityuantity
 							xhtml.td number_to_currency item.total_price
 						end
 					end
