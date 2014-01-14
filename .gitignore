@@ -17,5 +17,5 @@
 /tmp
 
 # Ignore pc dependence file
-/Gemfile
-/Gemfile.lock
+
+
